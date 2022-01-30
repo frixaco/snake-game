@@ -1,0 +1,25 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+#game {
+  width: fit-content;
+  border: 1px solid red;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 10px;
+  height: 10px;
+  border: 1px solid gray;
+  margin: 1px;
+}
