@@ -21,6 +21,19 @@ function getCellAtPosition([x, y]) {
   return cell;
 }
 
+let down;
+let up;
+let left;
+let right;
+
+function clearTimers() {
+  clearInterval(down);
+  clearInterval(up);
+  clearInterval(left);
+  clearInterval(right);
+}
+
+let lost = false;
 let snake = [
   [5, 6],
   [6, 6],
@@ -44,6 +57,10 @@ function initSnake() {
     [7, 4],
   ];
 
+  lost = false;
+  prev = snake[0];
+  clearTimers();
+
   snake.forEach((part) => {
     const cell = getCellAtPosition(part);
     cell.style.backgroundColor = "red";
@@ -58,23 +75,11 @@ function initSnake() {
 
 initSnake();
 
-let down;
-let up;
-let left;
-let right;
-
-function clearTimers() {
-  clearInterval(down);
-  clearInterval(up);
-  clearInterval(left);
-  clearInterval(right);
-}
-
 const downPos = (pos) => [pos[0] + 1, pos[1]];
 const upPos = (pos) => [pos[0] - 1, pos[1]];
 const leftPos = (pos) => [pos[0], pos[1] - 1];
 const rightPos = (pos) => [pos[0], pos[1] + 1];
-let lost = false;
+
 function move(posSetter) {
   if (lost) {
     return;
